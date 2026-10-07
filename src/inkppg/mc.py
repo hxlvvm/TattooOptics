@@ -14,7 +14,7 @@ Scattering is taken as depth-independent, which is what makes this reweighting e
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 import numpy as np
 
@@ -30,7 +30,7 @@ class MCResult:
     n_launched: int
     mus: float
     g: float
-    edges: np.ndarray = DEPTH_EDGES
+    edges: np.ndarray = field(default_factory=lambda: DEPTH_EDGES.copy())
 
     def save(self, path: str) -> None:
         np.savez_compressed(path, rho=self.rho, path=self.path, n_launched=self.n_launched, mus=self.mus,
