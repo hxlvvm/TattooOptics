@@ -1,12 +1,12 @@
-# inkppg
+# TattooOptics
 
-[![tests](https://github.com/hxlvvm/inkppg/actions/workflows/tests.yml/badge.svg)](https://github.com/hxlvvm/inkppg/actions/workflows/tests.yml)
+[![tests](https://github.com/hxlvvm/TattooOptics/actions/workflows/tests.yml/badge.svg)](https://github.com/hxlvvm/TattooOptics/actions/workflows/tests.yml)
 
 **Why smartwatches struggle on tattoos: a tissue-optics model of tattooed wrist PPG and pulse oximetry.**
 
 Optical heart-rate sensors are known to fail over tattoos. In a controlled study, heart rate dropped out at
 rest in 9 of 25 participants measured over tattooed skin (Navalta et al., 2025). A 2026 systematic review
-found that the mechanism has only been described qualitatively. `inkppg` is an open, mechanistic model of
+found that the mechanism has only been described qualitatively. `TattooOptics` is an open, mechanistic model of
 it: a photon Monte Carlo through layered skin with a pigment sheet in the dermis. It predicts how much
 pulse signal survives each ink colour at each LED wavelength, and **what a coloured tattoo could do to a
 pulse-oximeter reading**.
@@ -59,12 +59,12 @@ SNR than green does.
 
 ## How it works
 
-1. **White Monte Carlo** (`inkppg.mc`):
+1. **White Monte Carlo** (`tattooptics.mc`):
    - One million photon packets per wavelength scatter through skin (Henyey–Greenstein, g = 0.9, Jacques
      2013 scattering). They are reflected or escape at the skin–air interface (Fresnel, n = 1.4).
    - For every escaping photon, the code stores its exit distance and its path length in each 50 µm depth
      slice.
-2. **Absorption afterwards** (`inkppg.ppg`):
+2. **Absorption afterwards** (`tattooptics.ppg`):
    - Each photon is reweighted by `exp(−Σ μa,k L_k)`, so any melanin level, blood oxygenation, ink colour,
      density or depth is a millisecond re-weighting. No new simulation is needed.
    - The PPG modulation follows to first order from the weighted path through blood. The signal-to-noise

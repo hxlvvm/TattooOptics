@@ -3,7 +3,7 @@ import sys
 import time
 from pathlib import Path
 
-from inkppg import mc, optics
+from tattooptics import mc, optics
 
 wls = [float(sys.argv[1])] if len(sys.argv) > 1 else list(optics.WAVELENGTHS)
 n = int(sys.argv[2]) if len(sys.argv) > 2 else 1_000_000

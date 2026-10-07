@@ -1,4 +1,4 @@
-"""inkppg: how tattoo ink in the skin affects wrist photoplethysmography (PPG) and pulse oximetry."""
+"""tattooptics: how tattoo ink in the skin affects wrist photoplethysmography (PPG) and pulse oximetry."""
 from . import mc, optics
 from .mc import MCResult, run
 from .ppg import PPG, Skin, absorption_profile, apparent_spo2, measure, ratio_of_ratios, spo2_calibration

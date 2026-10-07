@@ -2,8 +2,8 @@
 import numpy as np
 import pytest
 
-from inkppg import Skin, measure, mc, optics, ratio_of_ratios
-from inkppg.diffusion import reflectance
+from tattooptics import Skin, measure, mc, optics, ratio_of_ratios
+from tattooptics.diffusion import reflectance
 
 
 @pytest.fixture(scope="module")

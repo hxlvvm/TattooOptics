@@ -3,7 +3,7 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "inkppg"
+name = "tattooptics"
 version = "0.1.0"
 description = "How tattoo ink in the skin affects wrist PPG heart-rate sensors and pulse oximetry: a white Monte Carlo tissue-optics model"
 readme = "README.md"
@@ -18,7 +18,7 @@ examples = ["matplotlib", "pillow"]
 dev = ["pytest"]
 
 [project.urls]
-Homepage = "https://github.com/hxlvvm/inkppg"
+Homepage = "https://github.com/hxlvvm/TattooOptics"
 
 [tool.setuptools.packages.find]
 where = ["src"]

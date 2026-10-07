@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.animation import FuncAnimation, PillowWriter
 
-from inkppg import MCResult, Skin, apparent_spo2, measure, optics, ratio_of_ratios, spo2_calibration
+from tattooptics import MCResult, Skin, apparent_spo2, measure, optics, ratio_of_ratios, spo2_calibration
 
 MC = {wl: MCResult.load(f"data/mc_{int(wl)}.npz") for wl in optics.WAVELENGTHS}
 RHO = 2.0

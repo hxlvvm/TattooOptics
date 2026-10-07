@@ -1,4 +1,4 @@
-# How inkppg works, in plain language
+# How TattooOptics works, in plain language
 
 ## What a smartwatch actually measures
 
