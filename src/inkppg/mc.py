@@ -1,17 +1,4 @@
-"""White Monte Carlo of light in skin: simulate scattering once, add any absorption afterwards.
-
-A pencil beam enters a scattering slab (refractive index n inside, air outside) at the origin. Photon packets
-take exponentially distributed steps, scatter with the Henyey-Greenstein phase function and leave through the
-top surface (with Fresnel reflection) or the bottom. No absorption is applied during transport. For every
-photon that leaves through the top, the exit radius rho and the path length spent in each depth bin are stored.
-
-Absorption is added later by reweighting (the "white Monte Carlo" principle):
-
-    weight = exp(- sum_k mu_a[k] * L[k])
-
-so one transport run per wavelength serves every combination of melanin, blood, ink colour, density and depth.
-Scattering is taken as depth-independent, which is what makes this reweighting exact.
-"""
+"""White Monte Carlo photon transport in a scattering slab; absorption is applied afterwards by reweighting."""
 from __future__ import annotations
 
 from dataclasses import dataclass, field

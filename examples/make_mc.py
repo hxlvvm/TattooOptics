@@ -1,8 +1,4 @@
-"""Run the white Monte Carlo once per LED wavelength and save it to data/mc_<nm>.npz.
-
-    python examples/make_mc.py            # 1e6 photons per wavelength (about 10-15 min each on one CPU core)
-    python examples/make_mc.py 530 200000 # one wavelength, fewer photons
-"""
+"""Run the white Monte Carlo for each LED wavelength and save data/mc_<nm>.npz."""
 import sys
 import time
 from pathlib import Path

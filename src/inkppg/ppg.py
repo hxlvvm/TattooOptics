@@ -1,16 +1,4 @@
-"""Wrist PPG with and without tattoo ink, from a white Monte Carlo run.
-
-Skin model (depths in mm, all configurable through `Skin`):
-  epidermis   0 - 0.1     melanin (melanosome volume fraction f_mel)
-  dermis      0.1 - 2.0   blood volume fraction f_blood, water
-  ink sheet   ink_top - ink_top + ink_thickness, inside the dermis (pigment adds to the dermal absorption)
-  subcutis    2.0 - 8.0   lower blood fraction
-The heartbeat changes the dermal blood volume by a fraction `pulse`; to first order the PPG modulation is
-
-    AC/DC = pulse * mu_a,blood * <L_blood>,   <L_blood> = absorption-weighted mean path in the perfused layers
-
-and the shot-noise-limited SNR of the pulse is AC/DC * sqrt(N_detected).
-"""
+"""PPG signal, SNR and pulse-oximetry ratio from a white Monte Carlo run."""
 from __future__ import annotations
 
 from dataclasses import dataclass, replace
@@ -23,7 +11,7 @@ from .mc import MCResult
 
 @dataclass(frozen=True)
 class Skin:
-    f_mel: float = 0.03            # epidermal melanosome volume fraction (light skin ~0.01-0.06, dark ~0.2-0.4)
+    f_mel: float = 0.03
     f_blood: float = 0.02          # dermal blood volume fraction
     f_blood_sub: float = 0.005     # subcutis blood volume fraction
     spo2: float = 0.98
@@ -72,11 +60,7 @@ class PPG:
 
 def measure(mcr: MCResult, skin: Skin, wl: float, rho: float, ring: float = 0.5,
             photons: float = 1e11) -> PPG:
-    """PPG at source-detector separation rho (mm), detector ring width `ring` (mm).
-
-    photons: emitted photons per sample. The default is an assumption chosen so that light skin without ink
-    gives a pulse SNR of the order of 30-40 dB at 530 nm and 2 mm; compare configurations relatively.
-    """
+    """PPG at source-detector separation rho (mm), detector ring width `ring` (mm)."""
     sel = np.abs(mcr.rho - rho) <= ring / 2
     L = mcr.path[sel].astype(np.float64)
     mu, blood = absorption_profile(skin, wl, mcr.edges)

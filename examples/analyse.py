@@ -1,11 +1,4 @@
-"""Figures from the saved Monte Carlo runs (run examples/make_mc.py first).
-
-1. assets/failure_map.png  pulse-SNR loss (dB) vs ink density for each ink colour and LED wavelength
-2. assets/spo2_bias.png     apparent SpO2 of an oximeter calibrated on ink-free skin, for coloured inks
-3. assets/separation.png    which source-detector spacing keeps the most SNR under black ink
-4. assets/ppg.gif           a green-LED PPG waveform losing its pulse as ink density rises
-Prints the numbers used in the README.
-"""
+"""Figures and tables from the saved Monte Carlo runs."""
 from pathlib import Path
 
 import matplotlib
@@ -83,9 +76,6 @@ ax.legend(fontsize=7)
 fig.tight_layout()
 fig.savefig("assets/separation.png", dpi=120)
 
-# ---- 4. waveform GIF (green LED, black ink density ramp). Absolute SNR depends on LED power and
-# perfusion, which are assumptions; the animation uses an illustrative low-power case with 20 dB pulse SNR
-# on ink-free skin and applies the model's SNR loss for each ink density.
 rng = np.random.default_rng(0)
 t = np.linspace(0, 4, 400)
 beat = np.maximum(0, np.sin(2 * np.pi * 1.2 * t)) ** 1.5 + 0.35 * np.maximum(0, np.sin(2 * np.pi * 1.2 * t - 2.2)) ** 2

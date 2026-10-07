@@ -1,11 +1,4 @@
-"""Steady-state diffusion theory for a semi-infinite homogeneous medium, used to check the Monte Carlo.
-
-- Farrell T.J., Patterson M.S., Wilson B.C., Med Phys 19(4):879-888, 1992, doi:10.1118/1.596777:
-  dipole source with an extrapolated boundary; `reflectance_flux` is its diffuse flux J(rho).
-- Kienle A., Patterson M.S., J Opt Soc Am A 14(1):246-254, 1997, doi:10.1364/JOSAA.14.000246:
-  the light that actually escapes through a mismatched boundary is R = C1 phi(rho, 0) + C2 J(rho), with
-  C1 = 0.118 and C2 = 0.306 for n = 1.4. This `reflectance` is the better reference for Monte Carlo.
-"""
+"""Diffusion-theory reflectance (Farrell 1992; Kienle & Patterson 1997) for checking the Monte Carlo."""
 from __future__ import annotations
 
 import numpy as np

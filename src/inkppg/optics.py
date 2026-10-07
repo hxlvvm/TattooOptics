@@ -1,15 +1,4 @@
-"""Optical properties of wrist skin and tattoo ink. Units: mm and mm^-1, wavelengths in nm.
-
-Sources
-- Scattering: generic skin reduced scattering mu_s' = a' (lambda / 500 nm)^-b with a' = 46 cm^-1, b = 1.421, and
-  anisotropy g = 0.9 (Jacques, Phys Med Biol 58:R37, 2013, doi:10.1088/0031-9155/58/11/R37).
-- Melanin: mu_a = 519 (lambda / 500 nm)^-3.5 cm^-1 per unit melanosome volume fraction (same review).
-- Haemoglobin: molar extinction coefficients (cm^-1 / M) from the S. Prahl / OMLC compilation of Gratzer and
-  Kollias, at the three LED wavelengths used here only; blood at 150 g/L haemoglobin, 64 500 g/mol.
-- Water: approximate absorption of pure water at 37 C (order of magnitude only; a minor term at these wavelengths).
-- Tattoo inks: real ink spectra are brand-specific and poorly characterised, so inks are PARAMETRIC what-if
-  absorbers: carbon black ~ lambda^-1, coloured inks as a Gaussian absorption band on a small baseline.
-"""
+"""Optical properties of skin and tattoo ink (mm, 1/mm, nm). Scattering and melanin after Jacques 2013."""
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -55,7 +44,7 @@ def water(wl: float) -> float:
 
 @dataclass(frozen=True)
 class Ink:
-    """A parametric tattoo ink. density scales the absorption (mm^-1 at the band peak)."""
+    """A parametric tattoo ink."""
 
     name: str
     peak: float | None          # nm; None = broadband carbon black

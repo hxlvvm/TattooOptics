@@ -1,4 +1,4 @@
-"""Checks of the transport code and the ink physics (small photon counts; about a minute on a CPU)."""
+"""Tests of the transport code and the ink physics."""
 import numpy as np
 import pytest
 
